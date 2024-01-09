@@ -1,0 +1,70 @@
+/* Size for brand */
+nav .navbar-brand
+{
+    font-size: xx-large;
+}
+
+/* Colors for brand */
+nav.bg-custom
+{
+    background-color: #DADAD9;
+}
+
+body
+{
+    background-color: #EDE6E3;
+}
+
+nav .navbar-brand .blue
+{
+    color: #5BC3EB;
+}
+nav .navbar-brand .red
+{
+    color: #F06449;
+}
+
+table.custom-table {
+    border-collapse: collapse;
+    width: 35%; /* Adjust the pixel value as needed */
+    margin: 0 auto; /* Center the table on the page */
+    min-width: 200px;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px; /* Add padding for better spacing */
+    text-align: center; /* Center the text in cells */
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Hide content that overflows the cell */
+    text-overflow: ellipsis; /* Display an ellipsis (...) to indicate text overflow */
+}
+
+button.custom-btn {
+    background-color: #5BC3EB;
+    color: white;
+    border: 2px solid #5BC3EB;
+    height: 38px;
+}
+
+text-center.priority {
+    color: #F06449;
+}
+
+.week-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.day {
+    border: 1px solid black; /* Add a border to visually see the droppable area */
+    padding: 10px;
+    margin: 5px;
+    min-height: 50px; /* Set a minimum height to make the droppable area visible */
+}
+
+#image {
+    height: 85.2px;
+    width: 185px;
+}

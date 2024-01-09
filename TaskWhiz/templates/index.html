@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Todo List
+{% endblock %}
+
+{% block main %}
+    <form action="/add" method="post" class="d-flex justify-content-center">
+        <div class="mb-4 me-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" name="task" placeholder="Add task" type="text">
+        </div>
+        <div class="mb-4 me-3">
+            <select class="form-select mx-auto w-auto" name="priority">
+                <option disabled selected>Priority</option>
+                <option value="I">I</option>
+                <option value="II">II</option>
+                <option value="III">III</option>
+            </select>
+        </div>
+        <button class="btn btn-primary custom-btn btn-sm" type="submit">Add</button>
+    </form>
+
+
+    <table class="table table-striped custom-table task-box">
+        <thead>
+            <tr>
+                <th>Complete</th>
+                <th>Task</th>
+                <th>Priority</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if todo %}
+                {% for item in todo %}
+                    <tr id="task-{{ item['id'] }}">
+                        <td class="col-1">
+                            <form action="/complete" method="post">
+                                <input type="hidden" name="task_id" value="{{ item['id'] }}">
+                                <input type="submit" value=" ">
+                            </form>
+                        </td>
+                        <td class="text-center">
+                            {{ item['task'] }}
+                        </td>
+                        <td class="col-1" style="color: #F06449;">{{ item['priority'] }}</td>
+                    </tr>
+                {% endfor %}
+            {% else %}
+                <tr>
+                    <td></td>
+                    <td style="color: grey;">WOOHOO! NO MORE WORK! 🥳</td>
+                    <td></td>
+                </tr>
+            {% endif %}
+        </tbody>
+    </table>
+
+    <div class="week-container">
+        {% set days_of_week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"] %}
+
+        {% for day in days_of_week %}
+            <div class="day" id="{{ day }}">
+                <h3>{{ day }}</h3>
+                {% for item in todo %}
+                    {% if item['day_of_week'] == day %}
+                        <p>
+                            <span>{{ item['task'] }}</span>
+                            {% if item['priority'] %}
+                                - <span style="color: #F06449;">{{ item['priority'] }}</span>
+                            {% endif %}
+                        </p>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
